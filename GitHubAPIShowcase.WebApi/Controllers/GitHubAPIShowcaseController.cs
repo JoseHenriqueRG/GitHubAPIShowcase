@@ -1,9 +1,11 @@
 ﻿using GitHubAPIShowcase.Domain.Interfaces;
 using GitHubAPIShowcase.Domain.ViewModels;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GitHubAPIShowcase.WebApi.Controllers
 {
+    [EnableCors("AllowSpecificOrigin")]
     [Route("api/[controller]")]
     [ApiController]
     public class GitHubAPIShowcaseController(IGitHubApiApplication gitHubApiBusiness, 
