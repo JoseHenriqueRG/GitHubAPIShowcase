@@ -11,10 +11,11 @@ O **GitHub API Showcase** é um projeto desenvolvido para demonstrar a utilizaç
 
 - **C#**: Linguagem de programação utilizada para o desenvolvimento do backend.
 - **ASP.NET Core**: Framework utilizado para construir a Web API.
-- **Angular**: Framework utilizado para construir a interface do usuário na aplicação WebApp.
+- **React**: Framework utilizado para construir a interface do usuário na aplicação App.
 - **Entity Framework Core**: Utilizado para o acesso e manipulação de dados.
 - **SQL Server**: Banco de dados utilizado no projeto.
 - **GitHub API**: Serviço externo utilizado para obter informações sobre repositórios e usuários.
+- **Docker**: Container e orquestração de containers.
 
 ## Funcionalidades
 
@@ -38,24 +39,11 @@ Siga as etapas abaixo para inicializar o projeto:
     cd GitHubAPIShowcase
     ```
 
-2. **Abra o projeto no Visual Studio**:
-   - Abra o arquivo `GitHubApiShowcase.sln` no Visual Studio.
+2. **Configuração do Projeto**
 
-3. **Configuração do Projeto de Inicialização**:
-   - No **Solution Explorer**, clique com o botão direito na solução (no topo da árvore de diretórios) e selecione **Propriedades**.
-   - No menu lateral, selecione **Propriedades Comuns** e depois **Projeto de Inicialização**.
-   - Escolha a opção **Selecionar vários projetos de inicialização**.
-   - Na coluna **Ação**:
-     - Para `GitHubApiShowcase.WebApi`, marque a opção **Iniciar**.
-     - Para `GitHubApiShowcase.WebApp`, marque a opção **Iniciar**.
-   - Clique em **Aplicar** e depois em **OK**.
-
-4. **Executar o Projeto**:
-   - Pressione **F5** ou clique no botão **Iniciar** no Visual Studio para compilar e executar o projeto.
-
-## Configuração do Banco de Dados
-
-O projeto já inclui o banco de dados necessário, localizado no arquivo `database.mdf`, que está integrado ao projeto. Portanto, não há necessidade de configurar ou instalar um banco de dados separadamente.
+- Abra o terminal na raiz do projeto `GitHubAPIShowcase` e execute o seguinte comando: `docker-compose up --build`. Certifique-se de que o Docker está instalado.
+- Após a conclusão do comando, verifique se ambos os containers (SQL Server e `githubapishowcasewebapi`) estão em execução.
+- Em seguida, abra outro terminal, navegue até a pasta `.\githubapishowcase.app\` e execute o comando `npm start` para iniciar o projeto React.
 
 ## Contribuições
 
