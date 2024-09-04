@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GitHubAPIShowcase.WebApi.Controllers
 {
-    [EnableCors("AllowSpecificOrigin")]
     [Route("api/[controller]")]
     [ApiController]
     public class GitHubAPIShowcaseController(IGitHubApiApplication gitHubApiBusiness, 
@@ -84,7 +83,7 @@ namespace GitHubAPIShowcase.WebApi.Controllers
             var result = await _gitHubFavoriteBusiness.SaveFavoriteRepository(view);
 
             if(!result.IsValid)
-                return BadRequest(result.Message);
+                return BadRequest(result);
 
             return Ok(result);
         }

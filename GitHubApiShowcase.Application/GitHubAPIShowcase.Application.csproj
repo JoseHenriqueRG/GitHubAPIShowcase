@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GitHubAPIShowcase.Domain\GitHubAPIShowcase.Domain.csproj" />
+    <ProjectReference Include="..\GitHubAPIShowcase.Infra\GitHubAPIShowcase.Infra.csproj" />
   </ItemGroup>
 
 </Project>

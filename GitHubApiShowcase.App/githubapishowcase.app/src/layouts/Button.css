@@ -1,0 +1,14 @@
+.btn {
+    background-color: black !important;
+    transition: .5s !important;
+    margin: 16px 4px 4px 4px !important;
+}
+
+.btn:hover {
+    background-color: #282828 !important;
+}
+
+.css-142372x-MuiButtonBase-root-MuiButton-root.Mui-disabled {
+    background-color: #282828 !important;
+    color: white !important;
+}

@@ -34,7 +34,7 @@ namespace GitHubAPIShowcase.Application
 
             if (await _contextRepository.ExistsByCheckAlreadyAsync(favorite))
             {
-                return new ActionResult<FavoriteViewModel> { IsValid = false, Message = "REpositório ja consta nos favoritos" };
+                return new ActionResult<FavoriteViewModel> { IsValid = false, Message = "Repositório já consta nos favoritos" };
             }
 
             var result = await _contextRepository.InsertAsync(favorite);

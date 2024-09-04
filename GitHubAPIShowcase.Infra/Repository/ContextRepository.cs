@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GitHubAPIShowcase.Infra.Repository
 {
-    public class ContextRepository : IContextRepository
+    public class ContextRepository(RepositoryDbContext repositoryDbContext) : IContextRepository
     {
-        private readonly RepositoryDbContext _db = new();
+        private readonly RepositoryDbContext _db = repositoryDbContext;
 
         public async Task<bool> ExistsByCheckAlreadyAsync(Favorite favorite)
         {

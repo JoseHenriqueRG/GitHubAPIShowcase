@@ -2,6 +2,8 @@ using GitHubAPIShowcase.Application;
 using GitHubAPIShowcase.Domain.Interfaces;
 using GitHubAPIShowcase.Infra.ApiGitHub;
 using GitHubAPIShowcase.Infra.Repository;
+using GitHubAPIShowcase.WebApi.Services;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,12 +18,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddDbContext<RepositoryDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("GitHubShowcasesConnection")));
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowSpecificOrigin",
         builder =>
         {
-            builder.WithOrigins("http://localhost:4200")
+            builder.WithOrigins("http://localhost:4200","http://localhost:3000")
                    .AllowAnyHeader()
                    .AllowAnyMethod();
         });
@@ -30,17 +35,22 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+/*if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+}*/
+
+app.UseCors("AllowSpecificOrigin");
+
+DatabaseManagementService.MigrationInitialization(app);
+
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
-
-app.UseCors("AllowSpecificOrigin");
 
 app.MapControllers();
 

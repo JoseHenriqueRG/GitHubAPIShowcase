@@ -1,0 +1,20 @@
+services:
+  githubapishowcasewebapi:
+    image: githubapishowcasewebapi
+    build:
+      context: .
+      dockerfile: GitHubAPIShowcase.WebApi/Dockerfile
+    ports:
+      - 8081:8080
+    depends_on:
+      - sqldata
+  
+  sqldata:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      - SA_PASSWORD=Teste#1234
+      - ACCEPT_EULA=Y
+    ports:
+      - "1433:1433"
+    volumes:
+      - C:\Users\joseh\source\volumes\GitHubApiShowcase:/var/opt/mssql/data
